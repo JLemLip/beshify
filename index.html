@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Replacer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .input-container input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .output {
+            font-size: 18px;
+            white-space: pre-line;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .copy-button {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .copy-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Space Replacer</h1>
+
+        <div class="input-container">
+            <input type="text" id="inputText" placeholder="Enter text" />
+            <button onclick="replaceSpaces()">Enter</button>
+        </div>
+
+        <div class="output-container">
+            <div id="outputText" class="output"></div>
+        </div>
+
+        <div class="copy-button">
+            <button onclick="copyOutputText()">Copy Output</button>
+        </div>
+    </div>
+
+    <script>
+        function replaceSpaces() {
+            var input = document.getElementById("inputText").value;
+            var output = input.replace(/ /g, " 🤸🏻 ");
+            document.getElementById("outputText").textContent = output;
+        }
+
+        function copyOutputText() {
+            var output = document.getElementById("outputText");
+            var range = document.createRange();
+            range.selectNode(output);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            alert("Copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
